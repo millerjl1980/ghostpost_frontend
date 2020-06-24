@@ -21,14 +21,15 @@ class App extends React.Component{
       <div>
         <h1>Ghostpost!</h1>
         <ul>
-        {this.state.posts.map(p => {
+        {this.state.posts.map(post => {
           return (
             <div>
-            <li>Type: {p.post_type}</li>
-            <li>Content:  {p.content}</li>
-            <li>Likes: {p.up_vote}</li>
-            <li>Dislikes: {p.down_vote}</li>
-            <li>Dated: {p.sub_time}</li>
+            <li>Type: {post.post_type}</li>
+            <li>Content: {post.content}</li>
+            <li>Likes: {post.up_vote}</li>
+            <li>Dislikes: {post.down_vote}</li>
+            <li>Dated: {post.sub_time}</li>
+
             <br></br>
             </div>)
         })}
