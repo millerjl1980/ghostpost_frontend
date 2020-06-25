@@ -6,19 +6,20 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      posts: []
+      posts: [],
+      editing: false,
     }
   }
 
   // https://codepen.io/aamulumi/pen/NAymbW/
   castUpVote(id){
     fetch(`http://127.0.0.1:8000/api/posts/${id}/up_vote/`, {method: 'POST',})
-    this.componentDidMount()
+    window.location.reload(true);
   }
 
   castDownVote(id){
     fetch(`http://127.0.0.1:8000/api/posts/${id}/down_vote/`, {method: 'POST',})
-    this.componentDidMount()
+    window.location.reload(true);
   }
 
   componentDidMount(){
