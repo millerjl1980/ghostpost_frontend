@@ -10,11 +10,23 @@ class App extends React.Component{
     }
   }
 
+  // https://codepen.io/aamulumi/pen/NAymbW/
+  castUpVote(id){
+    fetch(`http://127.0.0.1:8000/api/posts/${id}/up_vote/`, {method: 'POST',})
+    this.componentDidMount()
+  }
+
+  castDownVote(id){
+    fetch(`http://127.0.0.1:8000/api/posts/${id}/down_vote/`, {method: 'POST',})
+    this.componentDidMount()
+  }
+
   componentDidMount(){
     fetch('http://127.0.0.1:8000/api/posts/')
     .then(res => res.json())
     .then(data => this.setState({posts: data}))
   }
+
 
   render(){
     return (
@@ -24,13 +36,18 @@ class App extends React.Component{
         {this.state.posts.map(post => {
           return (
             <div>
-            <li>Type: {post.post_type}</li>
+            <li><strong>{post.post_type}</strong></li>
             <li>Content: {post.content}</li>
             <li>Likes: {post.up_vote}</li>
             <li>Dislikes: {post.down_vote}</li>
             <li>Dated: {post.sub_time}</li>
-
             <br></br>
+            <button onClick={() => this.castUpVote(post.id)}>
+            UpVote
+            </button>
+            <button onClick={() => this.castDownVote(post.id)}>
+            DownVote
+            </button>
             </div>)
         })}
         </ul>
