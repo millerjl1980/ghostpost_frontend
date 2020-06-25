@@ -22,6 +22,24 @@ class App extends React.Component{
     window.location.reload(true);
   }
 
+  allBoats(){
+    fetch('http://127.0.0.1:8000/api/posts/boasts/')
+    .then(res => res.json())
+    .then(data => this.setState({posts: data}))
+  }
+
+  allRoats(){
+    fetch('http://127.0.0.1:8000/api/posts/roasts/')
+    .then(res => res.json())
+    .then(data => this.setState({posts: data}))
+  }
+
+  highestRated(){
+    fetch('http://127.0.0.1:8000/api/posts/highest_rated/')
+    .then(res => res.json())
+    .then(data => this.setState({posts: data}))
+  }
+
   componentDidMount(){
     fetch('http://127.0.0.1:8000/api/posts/')
     .then(res => res.json())
@@ -33,6 +51,20 @@ class App extends React.Component{
     return (
       <div>
         <h1>Ghostpost!</h1>
+        <br></br>
+        <a href="http://localhost:8000/addpost">Submit a New Post</a>
+        <br></br>
+            <button onClick={() => this.allBoats()}>
+            All Boasts
+            </button>
+            <br></br>
+            <button onClick={() => this.allRoats()}>
+            All Roasts
+            </button>
+            <br></br>
+            <button onClick={() => this.highestRated()}>
+            Highest Rated
+            </button>
         <ul>
         {this.state.posts.map(post => {
           return (
