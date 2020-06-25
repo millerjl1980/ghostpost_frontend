@@ -7,11 +7,11 @@ class App extends React.Component{
     super(props)
     this.state = {
       posts: [],
-      editing: false,
     }
   }
 
   // https://codepen.io/aamulumi/pen/NAymbW/
+  // https://upmostly.com/tutorials/how-to-refresh-a-page-or-component-in-react#:~:text=If%20set%20to%20true%2C%20the,cached%20version%20of%20the%20page.&text=import%20React%20from%20'react'%3B,refreshPage%7D%3EClick%20to%20reload!
   castUpVote(id){
     fetch(`http://127.0.0.1:8000/api/posts/${id}/up_vote/`, {method: 'POST',})
     window.location.reload(true);
